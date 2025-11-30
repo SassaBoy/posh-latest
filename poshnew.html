@@ -1,0 +1,2988 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Posh - Healthcare Solutions | Zimbabwe</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6B46C1;
+            --secondary: #EC4899;
+            --accent: #F59E0B;
+            --dark: #1F2937;
+            --light: #F9FAFB;
+            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--dark);
+            overflow-x: hidden;
+            background: var(--light);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .nav-container {
+            max-width: 1260px;
+            margin: 0 auto;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+.posh-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    cursor: pointer;
+}
+
+.posh-icon {
+    position: relative;
+    width: 38px;
+    height: 38px;
+    background: var(--gradient-1);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 18px rgba(102, 126, 234, 0.35);
+}
+
+.plus-vertical,
+.plus-horizontal {
+    position: absolute;
+    background: white;
+    border-radius: 2px;
+}
+
+.plus-vertical {
+    width: 4px;
+    height: 18px;
+}
+
+.plus-horizontal {
+    width: 18px;
+    height: 4px;
+}
+
+.diamond {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    background: var(--secondary);
+    transform: rotate(45deg);
+    border-radius: 3px;
+}
+
+.posh-text {
+    font-size: 1.9rem;
+    font-weight: 900;
+    letter-spacing: -1px;
+    background: var(--gradient-1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 800;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--gradient-1);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .cta-btn {
+            padding: 0.8rem 2rem;
+            background: var(--gradient-1);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(102, 126, 234, 0.6);
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .menu-toggle span {
+            width: 28px;
+            height: 3px;
+            background: var(--dark);
+            margin: 4px 0;
+            transition: all 0.3s ease;
+            border-radius: 3px;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(8px, -8px);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 8rem 2rem 4rem;
+            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            background: var(--gradient-3);
+            opacity: 0.1;
+            border-radius: 50%;
+            filter: blur(100px);
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            color: #4B5563;
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .primary-btn {
+            padding: 1.2rem 3rem;
+            background: var(--gradient-1);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .primary-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
+        }
+
+        .secondary-btn {
+            padding: 1.2rem 3rem;
+            background: white;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .secondary-btn:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .hero-image {
+            position: relative;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero-visual {
+            width: 100%;
+            height: 500px;
+            background: var(--gradient-1);
+            border-radius: 30px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-visual::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 120%;
+            height: 120%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:rgba(255,255,255,0.3)"/><stop offset="100%" style="stop-color:rgba(255,255,255,0.1)"/></linearGradient></defs><circle cx="200" cy="150" r="80" fill="url(%23g1)"/><circle cx="600" cy="300" r="120" fill="url(%23g1)"/><circle cx="900" cy="200" r="60" fill="url(%23g1)"/><rect x="300" y="100" width="150" height="200" rx="20" fill="rgba(255,255,255,0.2)"/><rect x="700" y="350" width="200" height="150" rx="20" fill="rgba(255,255,255,0.2)"/></svg>');
+            opacity: 0.6;
+        }
+
+        .floating-card {
+            position: absolute;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            animation: floatCard 4s ease-in-out infinite;
+        }
+
+        @keyframes floatCard {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(2deg); }
+        }
+
+        .card-1 {
+            top: 10%;
+            right: -10%;
+            animation-delay: 0s;
+        }
+
+        .card-2 {
+            bottom: 15%;
+            left: -5%;
+            animation-delay: 1s;
+        }
+
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0.5rem;
+        }
+/* Solutions Showcase Section */
+        .solutions-showcase {
+            padding: 6rem 2rem;
+            background: white;
+            position: relative;
+        }
+
+        .solutions-showcase-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .solutions-tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            overflow-x: auto;
+            padding-bottom: 1rem;
+            scrollbar-width: thin;
+        }
+
+        .solutions-tabs::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .solutions-tabs::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        .solutions-tabs::-webkit-scrollbar-thumb {
+            background: var(--gradient-1);
+            border-radius: 10px;
+        }
+
+        .tab-btn {
+            flex-shrink: 0;
+            padding: 1rem 2rem;
+            background: #F9FAFB;
+            border: 2px solid #E5E7EB;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-weight: 600;
+            color: #4B5563;
+        }
+
+        .tab-btn:hover {
+            border-color: var(--primary);
+            background: #F3F4F6;
+            transform: translateY(-2px);
+        }
+
+        .tab-btn.active {
+            background: var(--gradient-1);
+            color: white;
+            border-color: transparent;
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .tab-icon {
+            font-size: 1.5rem;
+        }
+
+        .solutions-content {
+            position: relative;
+            min-height: 600px;
+        }
+
+        .solution-tab {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .solution-tab.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .solution-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .solution-details h3 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .solution-description {
+            font-size: 1.15rem;
+            color: #6B7280;
+            line-height: 1.8;
+            margin-bottom: 2.5rem;
+        }
+
+        .feature-list {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .feature-item {
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+        }
+
+        .feature-number {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-1);
+            color: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .feature-item h4 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-item p {
+            color: #6B7280;
+            line-height: 1.6;
+        }
+
+        .solution-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .solution-visual-wrapper {
+            position: relative;
+        }
+
+        .solution-showcase-visual {
+            background: var(--gradient-1);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .ehr-visual {
+            background: var(--gradient-2);
+        }
+
+        .patient-visual {
+            background: var(--gradient-3);
+        }
+
+        .analytics-visual {
+            background: linear-gradient(135deg, #FA8BFF 0%, #2BD2FF 100%);
+        }
+
+        .cloud-visual {
+            background: linear-gradient(135deg, #A8EDEA 0%, #FED6E3 100%);
+        }
+
+        .dashboard-mockup {
+            width: 100%;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .mockup-header {
+            padding: 1rem 1.5rem;
+            background: #F9FAFB;
+            border-bottom: 2px solid #E5E7EB;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .mockup-dots {
+            display: flex;
+            gap: 0.4rem;
+        }
+
+        .mockup-dots span {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #D1D5DB;
+        }
+
+        .mockup-title {
+            font-weight: 600;
+            color: #4B5563;
+            font-size: 0.9rem;
+        }
+/* ------------------------------
+   POSH CHATBOT WIDGET
+------------------------------ */
+
+.posh-chatbot-container {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    z-index: 9999;
+    font-family: inherit;
+}
+
+/* Open Button */
+.chatbot-button {
+    width: 60px;
+    height: 60px;
+    background: var(--gradient-1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 20px 35px rgba(90, 114, 255, 0.35);
+    transition: transform 0.3s ease;
+}
+
+.chatbot-button:hover {
+    transform: scale(1.08);
+}
+
+/* Chatbot Window */
+.chatbot-window {
+    width: 340px;
+    height: 430px;
+    background: rgba(255, 255, 255, 0.18);
+    border-radius: 18px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 35px 45px rgba(0,0,0,0.15);
+    position: absolute;
+    bottom: 80px;
+    right: 0;
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    animation: fadeUp 0.35s ease forwards;
+}
+
+/* Animations */
+@keyframes fadeUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* Header */
+.chatbot-header {
+    padding: 1rem 1.2rem;
+    background: var(--gradient-1);
+    color: white;
+    font-weight: 700;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chatbot-close {
+    font-size: 1.8rem;
+    cursor: pointer;
+    opacity: 0.8;
+    transition: 0.3s ease;
+}
+
+.chatbot-close:hover {
+    opacity: 1;
+}
+
+/* Messages */
+.chatbot-messages {
+    flex: 1;
+    padding: 1rem;
+    overflow-y: auto;
+}
+
+.bot-msg, .user-msg {
+    padding: 0.8rem 1rem;
+    margin-bottom: 0.8rem;
+    border-radius: 12px;
+    max-width: 78%;
+    font-size: 0.92rem;
+    line-height: 1.3rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.bot-msg {
+    background: white;
+    border-left: 4px solid var(--primary);
+}
+
+.user-msg {
+    background: var(--gradient-1);
+    color: white;
+    margin-left: auto;
+}
+
+/* Input Area */
+.chatbot-input-area {
+    display: flex;
+    padding: 0.8rem;
+    background: rgba(255,255,255,0.35);
+    backdrop-filter: blur(10px);
+}
+
+.chatbot-input {
+    flex: 1;
+    padding: 0.7rem;
+    border-radius: 10px;
+    border: none;
+    background: rgba(255,255,255,0.8);
+}
+
+.chatbot-send {
+    margin-left: 0.5rem;
+    width: 48px;
+    height: 48px;
+    border: none;
+    border-radius: 10px;
+    background: var(--gradient-1);
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.chatbot-send:hover {
+    transform: scale(1.05);
+}
+
+/* ------------------------------
+   WHATSAPP BUTTON
+------------------------------ */
+
+.posh-whatsapp-button {
+    position: fixed;
+    bottom: 25px;
+    left: 25px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #25D366;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 20px 30px rgba(37, 211, 102, 0.3);
+    z-index: 9999;
+    transition: 0.3s ease;
+}
+
+.posh-whatsapp-button img {
+    width: 34px;
+    height: 34px;
+}
+
+.posh-whatsapp-button:hover {
+    transform: scale(1.08);
+}
+
+        .mockup-content {
+            padding: 2rem;
+            min-height: 350px;
+        }
+
+        /* PMS Visual Styles */
+        .stat-card {
+            background: linear-gradient(135deg, #667eea15, #764ba215);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            border: 2px solid #E5E7EB;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--dark);
+            margin-bottom: 0.3rem;
+        }
+
+        .stat-label {
+            color: #6B7280;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .chart-area {
+            height: 150px;
+            background: linear-gradient(135deg, #667eea10, #764ba210);
+            border-radius: 12px;
+            margin-top: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .chart-area::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 60%;
+            background: linear-gradient(to top, var(--gradient-1), transparent);
+            opacity: 0.3;
+            clip-path: polygon(0% 100%, 10% 80%, 20% 85%, 30% 60%, 40% 70%, 50% 40%, 60% 50%, 70% 30%, 80% 40%, 90% 20%, 100% 30%, 100% 100%);
+        }
+
+        /* EHR Visual Styles */
+        .record-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .record-label {
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .record-data {
+            height: 60px;
+            background: linear-gradient(135deg, #f093fb15, #f5576c15);
+            border-radius: 8px;
+            border: 2px solid #E5E7EB;
+        }
+
+        /* Patient Portal Visual Styles */
+        .portal-card {
+            background: linear-gradient(135deg, #4facfe15, #00f2fe15);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            border: 2px solid #E5E7EB;
+            transition: all 0.3s ease;
+        }
+
+        .portal-card:hover {
+            transform: translateX(5px);
+            border-color: #4facfe;
+        }
+
+        .portal-icon {
+            font-size: 2rem;
+        }
+
+        .portal-label {
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        /* Analytics Visual Styles */
+        .analytics-chart {
+            height: 180px;
+            background: linear-gradient(135deg, #FA8BFF15, #2BD2FF15);
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid #E5E7EB;
+        }
+
+        .analytics-chart::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 70%;
+            background: linear-gradient(to top, #FA8BFF40, transparent);
+            clip-path: polygon(0% 100%, 15% 70%, 30% 80%, 45% 50%, 60% 60%, 75% 30%, 100% 40%, 100% 100%);
+        }
+
+        .analytics-metrics {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.8rem;
+        }
+
+        .metric-box {
+            height: 80px;
+            background: linear-gradient(135deg, #FA8BFF15, #2BD2FF15);
+            border-radius: 10px;
+            border: 2px solid #E5E7EB;
+        }
+
+        /* Cloud Visual Styles */
+        .cloud-diagram {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .cloud-node {
+            font-size: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .cloud-node:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+
+        .cloud-node:nth-child(3) {
+            animation-delay: 1s;
+        }
+
+        .cloud-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 5rem;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        /* Responsive for Solutions Showcase */
+        @media (max-width: 768px) {
+            .solutions-tabs {
+                gap: 0.5rem;
+            }
+
+            .tab-btn {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            .tab-btn span {
+                display: none;
+            }
+
+            .solution-layout {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .solution-details h3 {
+                font-size: 1.8rem;
+            }
+
+            .solution-description {
+                font-size: 1rem;
+            }
+
+            .feature-list {
+                gap: 1.5rem;
+            }
+
+            .solution-visual-wrapper {
+                order: -1;
+            }
+
+            .solution-showcase-visual {
+                min-height: 400px;
+                padding: 1rem;
+            }
+
+            .mockup-content {
+                padding: 1rem;
+            }
+
+            .cloud-diagram {
+                gap: 1rem;
+            }
+        }
+        /* Features Section */
+        .features {
+            padding: 6rem 2rem;
+            background: white;
+        }
+
+        .features-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-tag {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: linear-gradient(135deg, #667eea20, #764ba220);
+            color: var(--primary);
+            border-radius: 50px;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        .section-header h2 {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            font-size: 1.2rem;
+            color: #6B7280;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .feature-card {
+            padding: 2.5rem;
+            background: linear-gradient(135deg, #f6f8fb 0%, #ffffff 100%);
+            border-radius: 20px;
+            transition: all 0.4s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-1);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 0;
+        }
+
+        .feature-card:hover::before {
+            opacity: 0.05;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 50px rgba(102, 126, 234, 0.2);
+        }
+
+        .feature-card > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--gradient-1);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+        }
+
+        .feature-card:nth-child(2) .feature-icon {
+            background: var(--gradient-2);
+        }
+
+        .feature-card:nth-child(3) .feature-icon {
+            background: var(--gradient-3);
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .feature-card p {
+            color: #6B7280;
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 5rem 2rem;
+            background: var(--gradient-1);
+            color: white;
+        }
+
+        .stats-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-item p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            font-weight: 500;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, #1F2937 0%, #111827 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .cta-container h2 {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-container p {
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 70%;
+                max-width: 300px;
+                background: white;
+                flex-direction: column;
+                padding: 6rem 2rem 2rem;
+                box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
+                transition: right 0.3s ease;
+                gap: 2rem;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-image {
+                order: -1;
+            }
+
+            .hero-visual {
+                height: 350px;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stat-item h3 {
+                font-size: 3rem;
+            }
+
+            .cta-container h2 {
+                font-size: 2rem;
+            }
+
+            .floating-card {
+                display: none;
+            }
+        }
+        /* ------------------------------
+   CONTACT SECTION
+------------------------------ */
+
+.contact-section {
+    padding: 6rem 2rem 7rem;
+    background: var(--bg, #f7f9fc);
+}
+
+.contact-container {
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    gap: 3rem;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    align-items: start;
+}
+
+/* -------- Left Side (Info) -------- */
+
+.contact-info h2 {
+    font-size: 3rem;
+    font-weight: 900;
+    background: var(--gradient-1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.contact-info p {
+    margin: 1rem 0 2rem;
+    max-width: 500px;
+    opacity: 0.8;
+    font-size: 1.1rem;
+}
+
+.contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+}
+
+.detail-box {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: rgba(255, 255, 255, 0.25);
+    padding: 1rem 1.2rem;
+    border-radius: 16px;
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.07);
+}
+
+.detail-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 14px;
+    background: var(--gradient-1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    color: white;
+    box-shadow: 0 10px 20px rgba(90, 114, 255, 0.35);
+}
+
+.detail-box h4 {
+    margin-bottom: 2px;
+    font-weight: 800;
+}
+
+/* -------- Right Side (Form) -------- */
+
+.contact-form {
+    padding: 2.5rem 2rem;
+    background: rgba(255,255,255,0.2);
+    border-radius: 22px;
+    backdrop-filter: blur(18px);
+    border: 1px solid rgba(255,255,255,0.35);
+    box-shadow: 0 20px 35px rgba(0,0,0,0.08);
+    animation: fadeUp 0.5s ease forwards;
+}
+
+.contact-form h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    font-weight: 800;
+    background: var(--gradient-1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.input-group {
+    margin-bottom: 1.2rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 1rem 1.2rem;
+    background: rgba(255,255,255,0.85);
+    border: none;
+    border-radius: 14px;
+    font-size: 1rem;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.08);
+    resize: none;
+}
+
+.contact-form textarea {
+    height: 140px;
+}
+
+.contact-submit {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.2rem;
+    font-weight: 800;
+    border: none;
+    border-radius: 16px;
+    background: var(--gradient-1);
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 15px 25px rgba(90, 114, 255, 0.35);
+    transition: 0.3s ease;
+}
+
+.contact-submit:hover {
+    transform: translateY(-3px);
+}
+
+/* Reuse fadeUp animation */
+@keyframes fadeUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* Lead Generation Popup */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+            padding: 1rem;
+        }
+
+        .popup-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .popup-container {
+            background: white;
+            border-radius: 25px;
+            max-width: 900px;
+            width: 100%;
+            max-height: 90vh;
+            overflow: hidden;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
+            transform: scale(0.9) translateY(20px);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .popup-overlay.active .popup-container {
+            transform: scale(1) translateY(0);
+        }
+
+        .popup-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.05);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 10;
+            color: #4B5563;
+        }
+
+        .popup-close:hover {
+            background: rgba(0, 0, 0, 0.1);
+            transform: rotate(90deg);
+        }
+
+        .popup-content {
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            min-height: 600px;
+        }
+
+        /* Left Visual Side */
+        .popup-visual {
+            background: var(--gradient-1);
+            padding: 3rem 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .popup-visual::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .popup-graphic {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin-bottom: 3rem;
+        }
+
+        .graphic-circle {
+            position: absolute;
+            border-radius: 50%;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .circle-1 {
+            width: 200px;
+            height: 200px;
+            top: 0;
+            left: 0;
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        .circle-2 {
+            width: 150px;
+            height: 150px;
+            top: 25px;
+            left: 25px;
+            animation: pulse 3s ease-in-out infinite 0.5s;
+        }
+
+        .circle-3 {
+            width: 100px;
+            height: 100px;
+            top: 50px;
+            left: 50px;
+            animation: pulse 3s ease-in-out infinite 1s;
+        }
+
+        .popup-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 4rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .popup-badges {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            width: 100%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .mini-badge {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 0.8rem 1.2rem;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: white;
+            font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .mini-badge:hover {
+            transform: translateX(5px);
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .badge-emoji {
+            font-size: 1.3rem;
+        }
+
+        /* Right Form Side */
+        .popup-form-area {
+            padding: 3rem 2.5rem;
+            overflow-y: auto;
+            max-height: 90vh;
+        }
+
+        .popup-header {
+            margin-bottom: 2rem;
+        }
+
+        .popup-header h3 {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--dark);
+            margin-bottom: 0.8rem;
+            line-height: 1.2;
+        }
+
+        .popup-header p {
+            color: #6B7280;
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+
+        .popup-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .popup-input-group {
+            position: relative;
+        }
+
+        .popup-input {
+            width: 100%;
+            padding: 1.1rem 1.2rem 1.1rem 3.2rem;
+            border: 2px solid #E5E7EB;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            font-family: inherit;
+            background: #F9FAFB;
+        }
+
+        .popup-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: white;
+            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+        }
+
+        .input-icon {
+            position: absolute;
+            left: 1.2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.2rem;
+            pointer-events: none;
+        }
+
+        .popup-submit-btn {
+            padding: 1.2rem 2rem;
+            background: var(--gradient-1);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+            margin-top: 0.5rem;
+        }
+
+        .popup-submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
+        }
+
+        .popup-submit-btn svg {
+            transition: transform 0.3s ease;
+        }
+
+        .popup-submit-btn:hover svg {
+            transform: translateX(5px);
+        }
+
+        .popup-disclaimer {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #9CA3AF;
+            margin-top: 0.5rem;
+        }
+
+        .popup-disclaimer a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .popup-disclaimer a:hover {
+            text-decoration: underline;
+        }
+
+        .popup-trust {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #E5E7EB;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: #4B5563;
+            font-size: 0.9rem;
+        }
+
+        .trust-item svg {
+            color: #10B981;
+            flex-shrink: 0;
+        }
+
+        /* Popup Responsive */
+        @media (max-width: 968px) {
+            .popup-content {
+                grid-template-columns: 1fr;
+            }
+
+            .popup-visual {
+                display: none;
+            }
+
+            .popup-form-area {
+                padding: 2rem 1.5rem;
+            }
+
+            .popup-header h3 {
+                font-size: 1.6rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .popup-container {
+                border-radius: 15px;
+                max-height: 95vh;
+            }
+
+            .popup-form-area {
+                padding: 1.5rem 1.2rem;
+            }
+
+            .popup-input {
+                padding: 1rem 1rem 1rem 2.8rem;
+            }
+
+            .popup-close {
+                width: 35px;
+                height: 35px;
+            }
+        }
+        /* Footer New Design */
+        .footer-new {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-new::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.5), transparent);
+        }
+
+        .footer-new-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Main Footer Content */
+        .footer-main {
+            display: grid;
+            grid-template-columns: 1.5fr 2.5fr;
+            gap: 4rem;
+            padding: 4rem 0 3rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-brand {
+            max-width: 350px;
+        }
+
+        .footer-logo {
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+        }
+
+        .footer-tagline {
+            color: #9CA3AF;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #9CA3AF;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .social-link:hover {
+            background: var(--gradient-1);
+            color: white;
+            transform: translateY(-3px);
+            border-color: transparent;
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .footer-links-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2.5rem;
+        }
+
+        .footer-column {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer-heading {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: white;
+            position: relative;
+            padding-bottom: 0.8rem;
+        }
+
+        .footer-heading::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 30px;
+            height: 3px;
+            background: var(--gradient-1);
+            border-radius: 2px;
+        }
+
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .footer-links li a {
+            color: #9CA3AF;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            font-size: 0.95rem;
+        }
+
+        .footer-links li a:hover {
+            color: white;
+            padding-left: 5px;
+            transform: translateX(5px);
+        }
+
+        /* Newsletter Section */
+        .footer-newsletter {
+            padding: 3rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .newsletter-content {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .newsletter-info h3 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 0.8rem;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .newsletter-info p {
+            color: #9CA3AF;
+            line-height: 1.6;
+        }
+
+        .newsletter-form {
+            width: 100%;
+        }
+
+        .newsletter-input-wrapper {
+            display: flex;
+            gap: 0.8rem;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0.5rem;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-input-wrapper:focus-within {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+        }
+
+        .newsletter-input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            color: white;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .newsletter-input::placeholder {
+            color: #6B7280;
+        }
+
+        .newsletter-btn {
+            padding: 0.8rem 2rem;
+            background: var(--gradient-1);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            white-space: nowrap;
+        }
+
+        .newsletter-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .newsletter-btn svg {
+            transition: transform 0.3s ease;
+        }
+
+        .newsletter-btn:hover svg {
+            transform: translateX(3px);
+        }
+
+        /* Footer Bottom */
+        .footer-bottom {
+            padding: 2rem 0;
+        }
+
+        .footer-bottom-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-copyright {
+            color: #6B7280;
+            font-size: 0.9rem;
+        }
+
+        .footer-legal {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-legal a {
+            color: #9CA3AF;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-legal a:hover {
+            color: white;
+        }
+
+        .separator {
+            color: #4B5563;
+        }
+
+        .footer-badge-wrapper {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .security-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.6rem 1.2rem;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: 50px;
+            color: #10B981;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .security-badge svg {
+            flex-shrink: 0;
+        }
+
+        /* Footer Responsive */
+        @media (max-width: 968px) {
+            .footer-main {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .footer-brand {
+                max-width: 100%;
+            }
+
+            .footer-links-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+
+            .newsletter-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .footer-bottom-content {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .footer-badge-wrapper {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .footer-links-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .newsletter-input-wrapper {
+                flex-direction: column;
+                border-radius: 15px;
+                padding: 0.8rem;
+            }
+
+            .newsletter-btn {
+                width: 100%;
+                justify-content: center;
+                border-radius: 12px;
+            }
+
+            .footer-legal {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+
+            .separator {
+                display: none;
+            }
+
+            .footer-socials {
+                flex-wrap: wrap;
+            }
+
+            .footer-badge-wrapper {
+                flex-direction: column;
+            }
+
+            .security-badge {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="posh-logo">
+    <div class="posh-icon">
+        <span class="plus-vertical"></span>
+        <span class="plus-horizontal"></span>
+        <span class="diamond"></span>
+    </div>
+    <span class="posh-text">POSH</span>
+</div>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#solutions">Solutions</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="cta-btn">Get Started</button>
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Transform Healthcare Management in Zimbabwe</h1>
+                <p>Posh delivers cutting-edge practice management solutions designed for modern healthcare professionals. Streamline operations, enhance patient care, and maximize efficiency with our comprehensive platform.</p>
+                <div class="hero-buttons">
+                    <button class="primary-btn">Book a Demo</button>
+                    <button class="secondary-btn">Learn More</button>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="hero-visual"></div>
+                <div class="floating-card card-1">
+                    <div class="card-icon">📊</div>
+                    <strong>Real-time Analytics</strong>
+                </div>
+                <div class="floating-card card-2">
+                    <div class="card-icon">🔒</div>
+                    <strong>Secure & Compliant</strong>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="features-container">
+            <div class="section-header">
+                <span class="section-tag">WHY CHOOSE POSH</span>
+                <h2>Built for Excellence</h2>
+                <p>Empowering healthcare providers with innovative technology that delivers measurable results</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Lightning Fast</h3>
+                    <p>Experience unparalleled speed with our cloud-based infrastructure. Access patient records, schedule appointments, and process billing in seconds, not minutes.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Precision Management</h3>
+                    <p>Comprehensive practice management tools that cover everything from patient scheduling to financial reporting. Stay in control with intelligent automation.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Enterprise Security</h3>
+                    <p>Bank-level encryption and compliance with international healthcare standards. Your data is protected with multi-layer security protocols.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Mobile Ready</h3>
+                    <p>Access your practice anywhere, anytime. Our responsive platform works seamlessly across all devices, keeping you connected on the go.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💡</div>
+                    <h3>Smart Insights</h3>
+                    <p>Make data-driven decisions with powerful analytics and reporting. Gain actionable insights to optimize your practice performance.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🤝</div>
+                    <h3>24/7 Support</h3>
+                    <p>Dedicated support team available round the clock. We're committed to your success with comprehensive training and ongoing assistance.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solutions Showcase Section -->
+    <section class="solutions-showcase" id="solutions">
+        <div class="solutions-showcase-container">
+            <div class="section-header">
+                <span class="section-tag">OUR SOLUTIONS</span>
+                <h2>Powerful Tools for Modern Healthcare</h2>
+                <p>Comprehensive software ecosystem tailored to every aspect of your practice</p>
+            </div>
+            
+            <div class="solutions-tabs">
+                <button class="tab-btn active" data-tab="pms">
+                    <div class="tab-icon">💼</div>
+                    <span>Practice Management</span>
+                </button>
+                <button class="tab-btn" data-tab="ehr">
+                    <div class="tab-icon">📋</div>
+                    <span>Electronic Health Records</span>
+                </button>
+                <button class="tab-btn" data-tab="patient">
+                    <div class="tab-icon">👥</div>
+                    <span>Patient Engagement</span>
+                </button>
+                <button class="tab-btn" data-tab="analytics">
+                    <div class="tab-icon">📊</div>
+                    <span>Analytics & Reporting</span>
+                </button>
+                <button class="tab-btn" data-tab="cloud">
+                    <div class="tab-icon">☁️</div>
+                    <span>Cloud Solutions</span>
+                </button>
+            </div>
+
+            <div class="solutions-content">
+                <div class="solution-tab active" data-content="pms">
+                    <div class="solution-layout">
+                        <div class="solution-details">
+                            <h3>Complete Practice Management System</h3>
+                            <p class="solution-description">Streamline every aspect of your healthcare practice with our comprehensive PMS. From patient scheduling to financial reporting, manage it all in one powerful platform designed for efficiency and growth.</p>
+                            
+                            <div class="feature-list">
+                                <div class="feature-item">
+                                    <div class="feature-number">01</div>
+                                    <div>
+                                        <h4>Intelligent Scheduling</h4>
+                                        <p>Smart appointment booking with automated reminders, waitlist management, and conflict prevention.</p>
+                                    </div>
+                                </div>
+                                <div class="feature-item">
+                                    <div class="feature-number">02</div>
+                                    <div>
+                                        <h4>Billing & Claims</h4>
+                                        <p>Automated coding, real-time claim tracking, and seamless insurance integration for faster payments.</p>
+                                    </div>
+                                </div>
+                                <div class="feature-item">
+                                    <div class="feature-number">03</div>
+                                    <div>
+                                        <h4>Financial Management</h4>
+                                        <p>Comprehensive reporting, revenue cycle optimization, and detailed financial analytics.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="solution-actions">
+                                <button class="primary-btn">Explore Features</button>
+                                <button class="secondary-btn">Watch Demo</button>
+                            </div>
+                        </div>
+                        <div class="solution-visual-wrapper">
+                            <div class="solution-showcase-visual pms-visual">
+                                <div class="dashboard-mockup">
+                                    <div class="mockup-header">
+                                        <div class="mockup-dots">
+                                            <span></span><span></span><span></span>
+                                        </div>
+                                        <div class="mockup-title">Practice Dashboard</div>
+                                    </div>
+                                    <div class="mockup-content">
+                                        <div class="stat-card">
+                                            <div class="stat-value">247</div>
+                                            <div class="stat-label">Appointments Today</div>
+                                        </div>
+                                        <div class="stat-card">
+                                            <div class="stat-value">$45.2K</div>
+                                            <div class="stat-label">Monthly Revenue</div>
+                                        </div>
+                                        <div class="chart-area"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="solution-tab" data-content="ehr">
+                    <div class="solution-layout">
+                        <div class="solution-details">
+                            <h3>Electronic Health Records</h3>
+                            <p class="solution-description">Digitize patient information with our secure, compliant EHR system. Access complete medical histories, treatment plans, and lab results instantly for better patient care coordination.</p>
+                            
+                            <div class="feature-list">
+                                <div class="feature-item">
+                                    <div class="feature-number">01</div>
+                                    <div>
+                                        <h4>Digital Patient Records</h4>
+                                        <p>Comprehensive patient profiles with medical history, allergies, medications, and treatment timelines.</p>
+                                    </div>
+                                </div>
+                                <div class="feature-item">
+                                    <div class="feature-number">02</div>
+                                    <div>
+                                        <h4>Clinical Documentation</h4>
+                                        <p>Streamlined charting, e-prescribing, and integrated lab results for efficient workflows.</p>
+                                    </div>
+                                </div>
+                                <div class="feature-item">
+                                    <div class="feature-number">03</div>
+                                    <div>
+                                        <h4>Secure Sharing</h4>
+                                        <p>HIPAA-compliant data exchange with specialists, labs, and other healthcare providers.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="solution-actions">
+                                <button class="primary-btn">Explore Features</button>
+                                <button class="secondary-btn">Watch Demo</button>
+                            </div>
+                        </div>
+                        <div class="solution-visual-wrapper">
+                            <div class="solution-showcase-visual ehr-visual">
+                                <div class="dashboard-mockup">
+                                    <div class="mockup-header">
+                                        <div class="mockup-dots">
+                                            <span></span><span></span><span></span>
+                                        </div>
+                                        <div class="mockup-title">Patient Record</div>
+                                    </div>
+                                    <div class="mockup-content">
+                                        <div class="record-section">
+                                            <div class="record-label">Patient Info</div>
+                                            <div class="record-data"></div>
+                                        </div>
+                                        <div class="record-section">
+                                            <div class="record-label">Medical History</div>
+                                            <div class="record-data"></div>
+                                        </div>
+                                        <div class="record-section">
+                                            <div class="record-label">Prescriptions</div>
+                                            <div class="record-data"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="solution-tab" data-content="patient">
+                    <div class="solution-layout">
+                        <div class="solution-details">
+                            <h3>Patient Engagement Platform</h3>
+                            <p class="solution-description">Enhance patient satisfaction and retention with modern engagement tools. Enable online booking, automated communications, and secure patient portals for a superior healthcare experience.</p>
+                            
+                            <div class="feature-list">
+                                <div class="feature-item">
+                                    <div class="feature-number">01</div>
+                                    <div>
+                                        <h4>Patient Portal</h4>
+                                        <p>Self-service access to records, test results, appointment scheduling, and secure messaging.</p>
+                                    </div>
+                                </div>
+                                <div class="feature-item">
+                                    <div class="feature-number">02</div>
+                                    <div>
+                                        <h4>Automated Communications</h4>
+                                        <p>SMS and email reminders, follow-up messages, and personalized health education.</p>
+                                    </div>
+                                </div>
+                                <div class="feature-item">
+                                    <div class="feature-number">03</div>
+                                    <div>
+                                        <h4>Telemedicine</h4>
+                                        <p>Built-in video consultations with scheduling, documentation, and billing integration.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="solution-actions">
+                                <button class="primary-btn">Explore Features</button>
+                                <button class="secondary-btn">Watch Demo</button>
+                            </div>
+                        </div>
+                        <div class="solution-visual-wrapper">
+                            <div class="solution-showcase-visual patient-visual">
+                                <div class="dashboard-mockup">
+                                    <div class="mockup-header">
+                                        <div class="mockup-dots">
+                                            <span></span><span></span><span></span>
+                                        </div>
+                                        <div class="mockup-title">Patient Portal</div>
+                                    </div>
+                                    <div class="mockup-content">
+                                        <div class="portal-card">
+                                            <div class="portal-icon">📅</div>
+                                            <div class="portal-label">Book Appointment</div>
+                                        </div>
+                                        <div class="portal-card">
+                                            <div class="portal-icon">📄</div>
+                                            <div class="portal-label">View Records</div>
+                                        </div>
+                                        <div class="portal-card">
+                                            <div class="portal-icon">💬</div>
+                                            <div class="portal-label">Message Doctor</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="solution-tab" data-content="analytics">
+                    <div class="solution-layout">
+                        <div class="solution-details">
+                            <h3>Advanced Analytics & Reporting</h3>
+                            <p class="solution-description">Make data-driven decisions with powerful analytics. Track KPIs, identify trends, and optimize practice performance with customizable dashboards and detailed reports.</p>
+                            
+                            <div class="feature-list">
+                                <div class="feature-item">
+                                    <div class="feature-number">01</div>
+                                    <div>
+                                        <h4>Real-Time Dashboards</h4>
+                                        <p>Live performance metrics, appointment analytics, and revenue tracking at a glance.</p>
+                                    </div>
+                                </div>
+                                <div class="feature-item">
+                                    <div class="feature-number">02</div>
+                                    <div>
+                                        <h4>Custom Reports</h4>
+                                        <p>Generate detailed reports on any metric - financial, clinical, or operational data.</p>
+                                    </div>
+                                </div>
+                                <div class="feature-item">
+                                    <div class="feature-number">03</div>
+                                    <div>
+                                        <h4>Predictive Insights</h4>
+                                        <p>AI-powered forecasting for patient volume, revenue projections, and resource planning.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="solution-actions">
+                                <button class="primary-btn">Explore Features</button>
+                                <button class="secondary-btn">Watch Demo</button>
+                            </div>
+                        </div>
+                        <div class="solution-visual-wrapper">
+                            <div class="solution-showcase-visual analytics-visual">
+                                <div class="dashboard-mockup">
+                                    <div class="mockup-header">
+                                        <div class="mockup-dots">
+                                            <span></span><span></span><span></span>
+                                        </div>
+                                        <div class="mockup-title">Analytics Dashboard</div>
+                                    </div>
+                                    <div class="mockup-content">
+                                        <div class="analytics-chart"></div>
+                                        <div class="analytics-metrics">
+                                            <div class="metric-box"></div>
+                                            <div class="metric-box"></div>
+                                            <div class="metric-box"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="solution-tab" data-content="cloud">
+                    <div class="solution-layout">
+                        <div class="solution-details">
+                            <h3>Secure Cloud Infrastructure</h3>
+                            <p class="solution-description">Access your practice data anywhere, anytime with enterprise-grade cloud solutions. Benefit from automatic backups, 99.9% uptime, and bank-level security without managing servers.</p>
+                            
+                            <div class="feature-list">
+                                <div class="feature-item">
+                                    <div class="feature-number">01</div>
+                                    <div>
+                                        <h4>Anywhere Access</h4>
+                                        <p>Work from any device - desktop, tablet, or mobile with seamless synchronization.</p>
+                                    </div>
+                                </div>
+                                <div class="feature-item">
+                                    <div class="feature-number">02</div>
+                                    <div>
+                                        <h4>Automatic Backups</h4>
+                                        <p>Continuous data protection with automated backups and disaster recovery capabilities.</p>
+                                    </div>
+                                </div>
+                                <div class="feature-item">
+                                    <div class="feature-number">03</div>
+                                    <div>
+                                        <h4>Enterprise Security</h4>
+                                        <p>Military-grade encryption, multi-factor authentication, and compliance with all regulations.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="solution-actions">
+                                <button class="primary-btn">Explore Features</button>
+                                <button class="secondary-btn">Watch Demo</button>
+                            </div>
+                        </div>
+                        <div class="solution-visual-wrapper">
+                            <div class="solution-showcase-visual cloud-visual">
+                                <div class="dashboard-mockup">
+                                    <div class="mockup-header">
+                                        <div class="mockup-dots">
+                                            <span></span><span></span><span></span>
+                                        </div>
+                                        <div class="mockup-title">Cloud Infrastructure</div>
+                                    </div>
+                                    <div class="mockup-content">
+                                        <div class="cloud-diagram">
+                                            <div class="cloud-node">🖥️</div>
+                                            <div class="cloud-node">📱</div>
+                                            <div class="cloud-node">💻</div>
+                                            <div class="cloud-center">☁️</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stats-container">
+            <div class="stat-item">
+                <h3>500+</h3>
+                <p>Healthcare Providers</p>
+            </div>
+            <div class="stat-item">
+                <h3>99.9%</h3>
+                <p>Uptime Guarantee</p>
+            </div>
+            <div class="stat-item">
+                <h3>50K+</h3>
+                <p>Patients Managed Daily</p>
+            </div>
+            <div class="stat-item">
+                <h3>24/7</h3>
+                <p>Support Available</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-container">
+            <h2>Ready to Transform Your Practice?</h2>
+            <p>Join hundreds of healthcare professionals who trust Posh to run their practices efficiently and securely.</p>
+            <button class="primary-btn">Schedule Your Demo Today</button>
+        </div>
+    </section>
+<section id="contact" class="contact-section">
+
+    <div class="contact-container">
+
+        <div class="contact-info">
+            <h2>Get In Touch</h2>
+            <p>We’re here to help you transform your healthcare operations with intelligent, elegant, and modern solutions.</p>
+
+            <div class="contact-details">
+                <div class="detail-box">
+                    <div class="detail-icon">📞</div>
+                    <div>
+                        <h4>Phone</h4>
+                        <span>+264 81 123 4567</span>
+                    </div>
+                </div>
+
+                <div class="detail-box">
+                    <div class="detail-icon">📧</div>
+                    <div>
+                        <h4>Email</h4>
+                        <span>support@poshhealth.com</span>
+                    </div>
+                </div>
+
+                <div class="detail-box">
+                    <div class="detail-icon">📍</div>
+                    <div>
+                        <h4>Location</h4>
+                        <span>Where where, Zimbabwe</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <form class="contact-form">
+            <h3>Send us a message</h3>
+
+            <div class="input-group">
+                <input type="text" placeholder="Full Name" required>
+            </div>
+
+            <div class="input-group">
+                <input type="email" placeholder="Email Address" required>
+            </div>
+
+            <div class="input-group">
+                <input type="text" placeholder="Subject" required>
+            </div>
+
+            <div class="input-group">
+                <textarea placeholder="Your Message" required></textarea>
+            </div>
+
+            <button type="submit" class="contact-submit">Send Message</button>
+        </form>
+
+    </div>
+</section>
+
+    <!-- Chatbot Widget -->
+<div class="posh-chatbot-container">
+    <div class="chatbot-button">
+        💬
+    </div>
+
+    <div class="chatbot-window">
+        <div class="chatbot-header">
+            <span class="chatbot-title">POSH Assistant</span>
+            <span class="chatbot-close">×</span>
+        </div>
+
+        <div class="chatbot-messages">
+            <div class="bot-msg">Hello 👋 How can I help you today?</div>
+        </div>
+
+        <div class="chatbot-input-area">
+            <input type="text" class="chatbot-input" placeholder="Type a message...">
+            <button class="chatbot-send">➤</button>
+        </div>
+    </div>
+</div>
+<!-- Lead Generation Popup -->
+    <div class="popup-overlay" id="leadPopup">
+        <div class="popup-container">
+            <button class="popup-close" id="closePopup">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            
+            <div class="popup-content">
+                <div class="popup-visual">
+                    <div class="popup-graphic">
+                        <div class="graphic-circle circle-1"></div>
+                        <div class="graphic-circle circle-2"></div>
+                        <div class="graphic-circle circle-3"></div>
+                        <div class="popup-icon">🚀</div>
+                    </div>
+                    <div class="popup-badges">
+                        <div class="mini-badge">
+                            <span class="badge-emoji">⭐</span>
+                            <span>5.0 Rating</span>
+                        </div>
+                        <div class="mini-badge">
+                            <span class="badge-emoji">👥</span>
+                            <span>500+ Users</span>
+                        </div>
+                        <div class="mini-badge">
+                            <span class="badge-emoji">⚡</span>
+                            <span>2-Day Setup</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="popup-form-area">
+                    <div class="popup-header">
+                        <h3>Start Your Free Trial Today</h3>
+                        <p>Join 500+ healthcare providers already using Posh. No credit card required.</p>
+                    </div>
+
+                    <form class="popup-form" id="leadForm">
+                        <div class="popup-input-group">
+                            <input type="text" class="popup-input" placeholder="Full Name" required>
+                            <span class="input-icon">👤</span>
+                        </div>
+
+                        <div class="popup-input-group">
+                            <input type="email" class="popup-input" placeholder="Work Email" required>
+                            <span class="input-icon">✉️</span>
+                        </div>
+
+                        <div class="popup-input-group">
+                            <input type="tel" class="popup-input" placeholder="Phone Number" required>
+                            <span class="input-icon">📱</span>
+                        </div>
+
+                        <div class="popup-input-group">
+                            <select class="popup-input" required>
+                                <option value="">Practice Type</option>
+                                <option value="general">General Practice</option>
+                                <option value="specialist">Specialist Clinic</option>
+                                <option value="hospital">Hospital</option>
+                                <option value="dental">Dental Practice</option>
+                                <option value="optometry">Optometry</option>
+                                <option value="physiotherapy">Physiotherapy</option>
+                            </select>
+                            <span class="input-icon">🏥</span>
+                        </div>
+
+                        <button type="submit" class="popup-submit-btn">
+                            <span>Get Started Free</span>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </button>
+
+                        <p class="popup-disclaimer">
+                            By signing up, you agree to our <a href="#">Terms</a> and <a href="#">Privacy Policy</a>
+                        </p>
+                    </form>
+
+                    <div class="popup-trust">
+                        <div class="trust-item">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <span>No credit card required</span>
+                        </div>
+                        <div class="trust-item">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <span>Cancel anytime</span>
+                        </div>
+                        <div class="trust-item">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <span>Setup in 48 hours</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- Footer -->
+    <footer class="footer-new">
+        <div class="footer-new-container">
+            <!-- Main Footer Content -->
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <div class="footer-logo">POSH</div>
+                    <p class="footer-tagline">Transforming healthcare management across Zimbabwe with cutting-edge technology and unwavering support.</p>
+                    <div class="footer-socials">
+                        <a href="#" class="social-link" aria-label="Facebook">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Twitter">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="LinkedIn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Instagram">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-links-grid">
+                    <div class="footer-column">
+                        <h4 class="footer-heading">Solutions</h4>
+                        <ul class="footer-links">
+                            <li><a href="#solutions">Practice Management</a></li>
+                            <li><a href="#solutions">Electronic Health Records</a></li>
+                            <li><a href="#solutions">Patient Engagement</a></li>
+                            <li><a href="#solutions">Analytics & Reporting</a></li>
+                            <li><a href="#solutions">Cloud Solutions</a></li>
+                            <li><a href="#solutions">Telemedicine</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-column">
+                        <h4 class="footer-heading">Company</h4>
+                        <ul class="footer-links">
+                            <li><a href="#about">About Us</a></li>
+                            <li><a href="#careers">Careers</a></li>
+                            <li><a href="#press">Press & Media</a></li>
+                            <li><a href="#partners">Partners</a></li>
+                            <li><a href="#blog">Blog</a></li>
+                            <li><a href="#events">Events</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-column">
+                        <h4 class="footer-heading">Resources</h4>
+                        <ul class="footer-links">
+                            <li><a href="#help">Help Center</a></li>
+                            <li><a href="#docs">Documentation</a></li>
+                            <li><a href="#training">Training</a></li>
+                            <li><a href="#webinars">Webinars</a></li>
+                            <li><a href="#case-studies">Case Studies</a></li>
+                            <li><a href="#api">API Reference</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-column">
+                        <h4 class="footer-heading">Contact</h4>
+                        <ul class="footer-links">
+                            <li><a href="#contact">Contact Sales</a></li>
+                            <li><a href="#support">Customer Support</a></li>
+                            <li><a href="#demo">Request a Demo</a></li>
+                            <li><a href="tel:+2634123456">+263 4 123 4567</a></li>
+                            <li><a href="mailto:hello@posh.co.zw">hello@posh.co.zw</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Newsletter Section -->
+            <div class="footer-newsletter">
+                <div class="newsletter-content">
+                    <div class="newsletter-info">
+                        <h3>Stay Updated</h3>
+                        <p>Get the latest healthcare technology insights and product updates delivered to your inbox.</p>
+                    </div>
+                    <form class="newsletter-form">
+                        <div class="newsletter-input-wrapper">
+                            <input type="email" placeholder="Enter your email address" class="newsletter-input" required>
+                            <button type="submit" class="newsletter-btn">
+                                Subscribe
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p class="footer-copyright">&copy; 2024 Posh Healthcare Solutions. All rights reserved.</p>
+                    <div class="footer-legal">
+                        <a href="#privacy">Privacy Policy</a>
+                        <span class="separator">•</span>
+                        <a href="#terms">Terms of Service</a>
+                        <span class="separator">•</span>
+                        <a href="#cookies">Cookie Policy</a>
+                        <span class="separator">•</span>
+                        <a href="#security">Security</a>
+                    </div>
+                </div>
+                <div class="footer-badge-wrapper">
+                    <div class="security-badge">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        </svg>
+                        <span>Secure & Compliant</span>
+                    </div>
+                    <div class="security-badge">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        <span>ISO Certified</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!menuToggle.contains(e.target) && !navLinks.contains(e.target)) {
+                menuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+            }
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scroll for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile menu after click
+                    menuToggle.classList.remove('active');
+                    navLinks.classList.remove('active');
+                }
+            });
+        });
+    </script>
+    <script>
+const chatBtn = document.querySelector('.chatbot-button');
+const chatWindow = document.querySelector('.chatbot-window');
+const closeBtn = document.querySelector('.chatbot-close');
+const sendBtn = document.querySelector('.chatbot-send');
+const input = document.querySelector('.chatbot-input');
+const messages = document.querySelector('.chatbot-messages');
+
+chatBtn.addEventListener('click', () => {
+    chatWindow.style.display = 'flex';
+});
+
+closeBtn.addEventListener('click', () => {
+    chatWindow.style.display = 'none';
+});
+
+sendBtn.addEventListener('click', sendMessage);
+
+input.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') sendMessage();
+});
+
+function sendMessage() {
+    let text = input.value.trim();
+    if (text === "") return;
+
+    // Add user message
+    let userDiv = document.createElement('div');
+    userDiv.className = 'user-msg';
+    userDiv.textContent = text;
+    messages.appendChild(userDiv);
+
+    input.value = "";
+
+    // Auto scroll
+    messages.scrollTop = messages.scrollHeight;
+
+    // Simulated bot reply
+    setTimeout(() => {
+        let botDiv = document.createElement('div');
+        botDiv.className = 'bot-msg';
+        botDiv.textContent = "Thanks for your message! A POSH assistant will get back to you shortly.";
+        messages.appendChild(botDiv);
+
+        messages.scrollTop = messages.scrollHeight;
+    }, 700);
+}
+
+// Lead Popup Functionality
+        const leadPopup = document.getElementById('leadPopup');
+        const closePopup = document.getElementById('closePopup');
+        const leadForm = document.getElementById('leadForm');
+
+        // Show popup after 3 seconds
+        setTimeout(() => {
+            leadPopup.classList.add('active');
+        }, 3000);
+
+        // Close popup on click
+        closePopup.addEventListener('click', () => {
+            leadPopup.classList.remove('active');
+        });
+
+        // Close popup when clicking outside
+        leadPopup.addEventListener('click', (e) => {
+            if (e.target === leadPopup) {
+                leadPopup.classList.remove('active');
+            }
+        });
+
+        // Close with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                leadPopup.classList.remove('active');
+            }
+        });
+
+        // Handle form submission
+        leadForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(leadForm);
+            
+            // Here you would normally send data to your backend
+            console.log('Form submitted:', Object.fromEntries(formData));
+            
+            // Show success message (you can customize this)
+            alert('Thank you! We\'ll contact you within 24 hours.');
+            
+            // Close popup
+            leadPopup.classList.remove('active');
+            
+            // Reset form
+            leadForm.reset();
+        });
+
+        // Prevent popup from showing again after closed (session-based)
+        if (sessionStorage.getItem('popupClosed')) {
+            // Don't show popup this session
+        } else {
+            closePopup.addEventListener('click', () => {
+                sessionStorage.setItem('popupClosed', 'true');
+            });
+        }
+</script>
+
+</body>
+</html>
